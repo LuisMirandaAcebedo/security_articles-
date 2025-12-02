@@ -9,7 +9,10 @@ El problema es que la implementación de seguridad de al menos uno de estos disp
 En este artículo vamos a analizar las vulnerabilidades encontradas en la **baliza Help Flash IoT**, un dispositivo que según Vodafone ha vendido más de 250.000 unidades en España. 
 Aviso: no vas a necesitar ser un hacker  para entender por qué esto es preocupante.
 
-![](https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%20251202112301.png)
+<p align="center" width="100%">
+    <img width="50%" src="https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%2020251202112301.png">
+</p>
+
 
 A pesar de que los ejemplos de fallos de seguridad se centran en este modelo examinado, los problemas de seguridad encontrados en la parte de comunicaciones parecen ser **comunes a todos los dispositivos**, pues otros modelos también examinados tienen el mismo funcionamiento y los mismos problemas.
 
@@ -19,13 +22,19 @@ A pesar de que los ejemplos de fallos de seguridad se centran en este modelo exa
 
 Imagina que estás en una emergencia en la carretera. Activas tu baliza V16 y esta envía tu ubicación exacta, el identificador de tu dispositivo, y toda la información de red a los servidores de la DGT. Genial, ¿verdad? El problema es que **lo hace todo en texto plano**, sin ningún tipo de cifrado.
 
-![[Pasted image 20251202132441.png#center]]
+<p align="center" width="100%">
+    <img width="50%" src="https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%2020251202132441.png">
+</p>
 
 Es como si en lugar de llamar discretamente a emergencias, gritaras tu dirección exacta por un megáfono para que todo el vecindario se entere. Pero en este caso, "el vecindario" es cualquiera que pueda estar monitorizando el tráfico de red.
 
 Además de enviar los datos en claro, hay otro problema, la **conexión no está autenticada**. Esto significa que el receptor no puede verificar que el mensaje llega de quién se supone que tiene que llegar.
 
-![[Pasted image 20251126203844.png]]
+<p align="left" width="100%">
+    <img width="80%" src="https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%2020251126203844.png">
+</p>
+
+
 
 Sin este tipo de mecanismos de seguridad, se puede suplantar a la baliza, pues el servidor no puede saber si es la baliza auténtica u otro dispositivo que se está haciendo pasar por ella.
 
@@ -39,7 +48,10 @@ Del análisis del puerto serie del dispositivo (sí, tiene un puerto de depuraci
 - **Timestamp**: Cuándo activaste la baliza
 - etc...
 
-![[Pasted image 20251126204723.png]]
+<p align="left" width="100%">
+    <img width="100%" src="https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%2020251126204723.png">
+</p>
+
 
 Me llama la atención la **ausencia de mecanismos de integridad del mensaje**, algo que asegure al receptor del mensaje que éste no ha sido manipulado o afectado por errores en la transmisión. 
 
@@ -72,7 +84,9 @@ Pero hay un vector de ataque aún más interesante: **estaciones base LTE falsas
 
 El módulo celular (Quectel BC65) es exclusivo de NB-IoT/LTE-M, sin capacidad 2G. Levantar una BTS (estación base) 2G es relativamente sencillo y es un ataque clásico a dispositivos móviles, lo utilizan a diario ciberdelincuentes para ataques de phishing SMS o para espionaje, aunque en este caso no sería posible porque el módem del dispositivo no tiene fallback a 2G (que es el mecanismo que se utiliza para realizar ataques a dispositivos actuales, mediante un downgrade attack), pero esto no impide el ataque, simplemente lo hace más... moderno.
 
-![[Pasted image 20251202170607.png#center|500]]
+<p align="center" width="100%">
+    <img width="100%" src="https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%2020251202170607.png">
+</p>
 
 **Cómo funciona el ataque:**
 
@@ -101,8 +115,9 @@ El módulo celular (Quectel BC65) es exclusivo de NB-IoT/LTE-M, sin capacidad 2G
      - Reenviar selectivamente el tráfico para no levantar sospechas
    - Es transparente para el sistema: el servidor recibe datos, pero modificados
 
-
-![[Pasted image 20251201174836.png]]
+<p align="center" width="100%">
+    <img width="100%" src="https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%2020251201174836.png">
+</p>
 
 **El "cifrado" de LTE no protege nada aquí**: Aunque LTE tiene cifrado en la capa de transporte, el payload de la aplicación, el mensaje en sí (las tramas UDP) **va completamente en claro**. 
 
@@ -139,7 +154,9 @@ Aquí es donde la cosa se pone realmente interesante. El dispositivo tiene un si
 
 No hace falta PIN. No hace falta contraseña. No hace falta confirmación en una app móvil. Solo acceso al botón. Ocho segundos.
 
-![[Pasted image 20251126203617.png]]
+<p align="center" width="100%">
+    <img width="100%" src="https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%2020251126203617.png">
+</p>
 
 ### Credenciales Compartidas: Porque la Seguridad es Cosa de Todos
 
@@ -199,7 +216,10 @@ He desarrollado una prueba de concepto completa que demuestra lo fácil que es c
    - Con un archivo JSON de configuración falso
    - Y un firmware modificado
 
-![[Pasted image 20251126205035.png]]
+<p align="left" width="100%">
+    <img width="60%" src="https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%2020251126205035.png">
+</p>
+
 
 ### Ejecución del Ataque
 
@@ -215,11 +235,15 @@ He desarrollado una prueba de concepto completa que demuestra lo fácil que es c
 
 Para los frikis, aquí podéis ver el log de mi servidor de actualizaciones falso que utilicé para las pruebas.
 
-![[Pasted image 20251202154325.png]]
+<p align="left" width="100%">
+    <img width="100%" src="https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%2020251202154325.png">
+</p>
 
 Y aquí el log del dispositivo cuando la actualización remota se inicia de forma correcta y comienza a descargarse el firmware malicioso que preparé.
 
-![[Pasted image 20251129135450.png]]
+<p align="left" width="100%">
+    <img width="100%" src="https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%2020251129135450.png">
+</p>
 
 ### Resultado
 
@@ -233,7 +257,9 @@ Una vez instalado el firmware malicioso, el control del dispositivo es total. Po
 - Convertir la baliza en un dispositivo aparentemente homologado, que no cumple la homologación
 - ...
 
-![[Pasted image 20251126203211.png]]
+<p align="left" width="100%">
+    <img width="80%" src="https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%2020251126203211.png">
+</p>
 
 ## Efecto Cascada: Cuando Todo se Desmorona
 
@@ -264,7 +290,9 @@ Un atacante despliega varios puntos de acceso falsos en zonas de alto tráfico (
 
 El más cinematográfico pero perfectamente factible: un atacante en una furgoneta con una fake BTS tipo eNodeB recorre la ciudad o se posiciona en una autopista.
 
-![[Pasted image 20251202165449.png#center|500]]
+<p align="center" width="100%">
+    <img width="50%" src="https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%2020251202165449.png">
+</p>
 
 **Versión simple (DoS):** Intercepta las comunicaciones de todas las balizas cercanas, leyendo ubicaciones en tiempo real. Las balizas creen que están enviando alertas, pero **los datos se pierden** en el vacío. Útil para impedir que lleguen emergencias reales de personas específicas o en zonas específicas.
 
@@ -322,7 +350,10 @@ INCIBE declinó asignar CVEs, argumentando que las vulnerabilidades requieren "a
 
 Es comprensible, todos sabemos que un ciberdelincuente o ciberterrorista ve una placa de circuito y entra en pánico, ni por asomo se les ocurriría meter mano al hardware de un dispositivo para poder llevar a cabo un ataque.
 
-![[Pasted image 20251202165708.png#center|500]]
+<p align="center" width="100%">
+    <img width="50%" src="https://github.com/LuisMirandaAcebedo/security_articles-/blob/main/help_flash_iot/pictures/Pasted%20image%2020251202165708.png">
+</p>
+
 
 La respuesta de INCIBE técnicamente es correcta para las vulnerabilidades de comunicaciones, estemos o no de acuerdo con la explotabilidad de las mismas. El problema es que las vulnerabilidades OTA **convierten el acceso físico momentáneo (pulsar un botón) en compromiso remoto permanente**. Y eso, bajo mi criterio, sí es una vulnerabilidad de ciberseguridad en toda regla.
 
