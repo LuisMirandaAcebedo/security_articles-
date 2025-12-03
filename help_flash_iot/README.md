@@ -322,9 +322,9 @@ No estamos hablando de hackear una bombilla inteligente o un robot aspirador. Es
 - Ha sido **homologado** y aprobado oficialmente
 
 
-## La Respuesta de INCIBE: Cuando "Físico" No Es Tan Físico
+## La Respuesta de : Cuando "Físico" No Es Tan Físico
 
-INCIBE declinó asignar CVEs, argumentando que las vulnerabilidades requieren "acceso físico". Su criterio:
+ declinó asignar CVEs, argumentando que las vulnerabilidades requieren "acceso físico". Su criterio:
 
 > "Physical theft, damage, or destruction are not by themselves cybersecurity Vulnerabilities."
 
@@ -340,7 +340,7 @@ La respuesta de INCIBE técnicamente es correcta para las vulnerabilidades de co
 He enviado también la solicitud a MITRE para asignación de CVE, pues ellos cuentan con antecedentes de vulnerabilidades tenidas en cuenta a pesar de requerir acceso físico a botones y hacer un uso no esperado de ellos. 
 Veremos qué opinan ellos sobre si 8 segundos de pulsar un botón cuenta como "acceso físico significativo" o no.
 
-*Nota: Sin ánimo de criticar  a INCIBE, que hace un trabajo importante, pero quizás las autoridades en materia de Ciberseguridad deberían reconsiderar la definición de "físico" en la era del IoT.*
+*Nota: Sin ánimo de criticar  a INCIBE, que hace un trabajo importante y sigue directrices marcadas, pero quizás las autoridades en materia de Ciberseguridad deberían reconsiderar la definición de "físico" en la era del IoT.*
 
 ## Impacto Real: Más Allá de la Teoría
 
