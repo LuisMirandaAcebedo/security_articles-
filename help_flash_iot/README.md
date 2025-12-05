@@ -14,7 +14,7 @@ Aviso: no vas a necesitar ser un hacker  para entender por qué esto es preocupa
 </p>
 
 
-A pesar de que los ejemplos de fallos de seguridad se centran en este modelo examinado, los problemas de seguridad encontrados en la parte de comunicaciones parecen ser **comunes a todos los dispositivos**, pues otros modelos también examinados tienen el mismo funcionamiento y los mismos problemas.
+A pesar de que los ejemplos de fallos de seguridad se centran en este modelo examinado, los problemas de seguridad encontrados en la parte de comunicaciones parecen ser **comunes a todos los dispositivos**, pues otros modelos también examinados tienen el mismo funcionamiento y las mismas deficiencias.
 
 Grosso modo, el funcionamiento de estos dispositivos se basa en el siguiente esquema:
 - La baliza, una vez encendida por el usuario, intenta obtener coordenadas GPS y se conecta por NB-IoT al operador de telefonía.
@@ -297,7 +297,11 @@ Llevas tu coche al taller. Mientras están "revisando los niveles", comprometen 
 
 Un atacante despliega varios puntos de acceso falsos en zonas de alto tráfico (centros comerciales, gasolineras, áreas de servicio). Con las credenciales compartidas, cualquier dispositivo que entre en modo OTA en esas zonas se compromete automáticamente. Escala exponencialmente.
 
-### Escenario 3: La Furgoneta con Antena
+### Escenario 3: El Usuario Conspiranoico
+
+El propio dueño de la baliza, en su afán por mantener su privacidad y no permitir que el dispositivo envíe ningún dato, modifica el software de su propia unidad para que encienda las luces pero no haga nada más. Tendrá una baliza homologada, sin ningún signo de manipulación ni de haber sido abierta, que ya no cumple con la normativa pero con la apariencia de un dispositivo legítimo y legal.
+
+### Escenario 4: La Furgoneta con Antena
 
 El más cinematográfico pero perfectamente factible: un atacante en una furgoneta con una fake BTS tipo eNodeB recorre la ciudad o se posiciona en una autopista.
 
