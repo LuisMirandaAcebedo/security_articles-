@@ -341,8 +341,10 @@ Es comprensible, todos sabemos que un ciberdelincuente o ciberterrorista ve una 
 
 La respuesta de INCIBE técnicamente es correcta para las vulnerabilidades de comunicaciones, estemos o no de acuerdo con la explotabilidad de las mismas. El problema es que las vulnerabilidades OTA **convierten el acceso físico momentáneo (pulsar un botón) en compromiso remoto permanente**. Y eso, bajo mi criterio, sí es una vulnerabilidad de ciberseguridad en toda regla.
 
-He enviado también la solicitud a MITRE para asignación de CVE, pues ellos cuentan con antecedentes de vulnerabilidades tenidas en cuenta a pesar de requerir acceso físico a botones y hacer un uso no esperado de ellos. 
-Veremos qué opinan ellos sobre si 8 segundos de pulsar un botón cuenta como "acceso físico significativo" o no.
+~~He enviado también la solicitud a MITRE para asignación de CVE, pues ellos cuentan con antecedentes de vulnerabilidades tenidas en cuenta a pesar de requerir acceso físico a botones y hacer un uso no esperado de ellos. 
+Veremos qué opinan ellos sobre si 8 segundos de pulsar un botón cuenta como "acceso físico significativo" o no.~~
+
+<code style="color : red">*ACTUALIZACIÓN!: MITRE ha considerado la vulnerabilidad y ha asginado CVE: <https://www.cve.org/CVERecord?id=CVE-2025-65855>*</code>
 
 *Nota: Sin ánimo de criticar  a INCIBE, que hace un trabajo importante y sigue directrices marcadas, pero quizás las autoridades en materia de Ciberseguridad deberían reconsiderar la definición de "físico" en la era del IoT.*
 
